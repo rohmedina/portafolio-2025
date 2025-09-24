@@ -1,0 +1,33 @@
+/* ===== GLOBAL BASE STYLES ===== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background: var(--color-background);
+  overflow-x: hidden;
+  padding-top: 80px; /* Space for fixed header */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-20);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
