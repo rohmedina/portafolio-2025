@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rodrigomedina.dev/sitemap.xml
+
+# Disallow crawling of development files
+Disallow: /src/
+Disallow: /*.json
+Disallow: /*.ts
+Disallow: /*.vue

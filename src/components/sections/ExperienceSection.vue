@@ -1,13 +1,13 @@
 <template>
-  <section class="experience-section" id="experiencia">
+  <section class="experience-section animate-on-scroll" id="experiencia">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header animate-on-scroll">
         <h2 class="section-title">Experiencia Profesional</h2>
         <p class="section-subtitle">Mi trayectoria profesional en desarrollo web</p>
       </div>
 
       <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item animate-on-scroll">
           <div class="timeline-marker">
             <div class="timeline-dot"></div>
           </div>
@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item animate-on-scroll">
           <div class="timeline-marker">
             <div class="timeline-dot"></div>
           </div>
@@ -77,7 +77,7 @@
           </div>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item animate-on-scroll">
           <div class="timeline-marker">
             <div class="timeline-dot"></div>
           </div>

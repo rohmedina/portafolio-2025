@@ -1,15 +1,15 @@
 <template>
-  <section class="about" id="acerca">
+  <section class="about animate-on-scroll" id="acerca">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header animate-on-scroll">
         <span class="section-badge">Acerca de mí</span>
         <h2 class="section-title">Mi historia profesional y pasión por el desarrollo</h2>
       </div>
 
       <div class="about-content">
-        <div class="about-story">
+        <div class="about-story animate-on-scroll">
           <div class="story-text">
-            <div class="intro-highlight">
+            <div class="intro-highlight animate-on-scroll">
               <p class="intro-text">
                 Soy un <strong>Desarrollador Frontend</strong> con más de
                 <strong>4 años</strong> transformando ideas en aplicaciones web que realmente
@@ -17,14 +17,14 @@
               </p>
             </div>
 
-            <p>
+            <p class="animate-on-scroll">
               Mi trayectoria incluye experiencia en empresas como <strong>Codelabs</strong>,
               <strong>TAAG Genetics</strong>, <strong>Entel</strong> y
               <strong>Desarroya Limitada</strong>, donde he optimizado interfaces logrando mejoras
               del 20% en tiempos de carga y aumentos del 25% en PageSpeed.
             </p>
 
-            <p>
+            <p class="animate-on-scroll">
               Actualmente trabajo como <strong>freelancer independiente</strong>, donde he entregado
               más de 5 aplicaciones web personalizadas para pymes, logrando aumentos del 30% en
               captación de clientes. Mi especialización en <strong>automatizaciones N8N</strong> me
@@ -32,14 +32,14 @@
               manual.
             </p>
 
-            <p>
+            <p class="animate-on-scroll">
               Soy <strong>Analista Programador Computacional</strong> graduado de
               <strong>Duoc UC</strong> y completé el programa <strong>Talento Digital</strong>.
               Recientemente obtuve la certificación <strong>Product Owner</strong>, combinando
               visión técnica con estrategia de producto.
             </p>
 
-            <div class="values-highlight">
+            <div class="values-highlight animate-on-scroll">
               <p>
                 Mi enfoque combina tecnología, usabilidad y valor de negocio. Cada proyecto que
                 desarrollo está orientado a

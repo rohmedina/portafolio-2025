@@ -1,0 +1,150 @@
+/* ===== SCROLL ANIMATIONS ===== */
+
+/* Estilos base para elementos animados */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Estado animado cuando el elemento es visible */
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variaciones de animación */
+.animate-on-scroll.fade-in-left {
+  transform: translateX(-30px);
+}
+
+.animate-on-scroll.fade-in-left.animated {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.fade-in-right {
+  transform: translateX(30px);
+}
+
+.animate-on-scroll.fade-in-right.animated {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.fade-in-up {
+  transform: translateY(30px);
+}
+
+.animate-on-scroll.fade-in-up.animated {
+  transform: translateY(0);
+}
+
+.animate-on-scroll.fade-in-down {
+  transform: translateY(-30px);
+}
+
+.animate-on-scroll.fade-in-down.animated {
+  transform: translateY(0);
+}
+
+/* Animación de escala */
+.animate-on-scroll.scale-in {
+  transform: scale(0.8);
+}
+
+.animate-on-scroll.scale-in.animated {
+  transform: scale(1);
+}
+
+/* Animación de rotación */
+.animate-on-scroll.rotate-in {
+  transform: rotate(-10deg) scale(0.8);
+}
+
+.animate-on-scroll.rotate-in.animated {
+  transform: rotate(0deg) scale(1);
+}
+
+/* Delays escalonados para múltiples elementos */
+.animate-on-scroll[data-delay="100"] {
+  transition-delay: 0.1s;
+}
+
+.animate-on-scroll[data-delay="200"] {
+  transition-delay: 0.2s;
+}
+
+.animate-on-scroll[data-delay="300"] {
+  transition-delay: 0.3s;
+}
+
+.animate-on-scroll[data-delay="400"] {
+  transition-delay: 0.4s;
+}
+
+.animate-on-scroll[data-delay="500"] {
+  transition-delay: 0.5s;
+}
+
+/* Animaciones específicas para secciones */
+.section-header.animate-on-scroll {
+  transform: translateY(20px);
+}
+
+.tech-card.animate-on-scroll {
+  transform: translateY(40px) scale(0.95);
+}
+
+.tech-card.animate-on-scroll.animated {
+  transform: translateY(0) scale(1);
+}
+
+/* Animación para elementos de lista */
+.animate-on-scroll.list-item {
+  transform: translateX(-20px);
+  transition-delay: var(--animation-delay, 0s);
+}
+
+.animate-on-scroll.list-item.animated {
+  transform: translateX(0);
+}
+
+/* Animación para botones */
+.animate-on-scroll.button {
+  transform: translateY(20px) scale(0.9);
+}
+
+.animate-on-scroll.button.animated {
+  transform: translateY(0) scale(1);
+}
+
+/* Animación para imágenes */
+.animate-on-scroll.image {
+  transform: scale(0.8);
+  filter: blur(2px);
+}
+
+.animate-on-scroll.image.animated {
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Reduce motion para usuarios que prefieren menos animación */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Animaciones más suaves en dispositivos móviles */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    transition-duration: 0.4s;
+    transform: translateY(20px);
+  }
+  
+  .tech-card.animate-on-scroll {
+    transform: translateY(20px) scale(0.98);
+  }
+}

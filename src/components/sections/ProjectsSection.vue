@@ -1,7 +1,7 @@
 <template>
-  <section class="projects" id="proyectos">
+  <section class="projects animate-on-scroll" id="proyectos">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header animate-on-scroll">
         <span class="section-badge">Portafolio</span>
         <h2 class="section-title">Proyectos Destacados</h2>
         <p class="section-description">
@@ -11,7 +11,7 @@
 
       <div class="projects-grid">
         <!-- Project 1: Optimización de Rendimiento Web -->
-        <article class="project-card featured">
+        <article class="project-card featured animate-on-scroll">
           <div class="project-image">
             <div class="project-placeholder optimization">
               <div class="placeholder-icon">⚡</div>
@@ -105,7 +105,7 @@
         </article>
 
         <!-- Project 2: Automatizaciones N8N -->
-        <article class="project-card featured">
+        <article class="project-card featured animate-on-scroll">
           <div class="project-image">
             <div class="project-placeholder n8n-automation">
               <div class="placeholder-icon">⚡</div>
@@ -199,7 +199,7 @@
         </article>
 
         <!-- Project 3: E-commerce WordPress -->
-        <article class="project-card featured">
+        <article class="project-card featured animate-on-scroll">
           <div class="project-image">
             <div class="project-placeholder wordpress">
               <div class="placeholder-icon">🔧</div>

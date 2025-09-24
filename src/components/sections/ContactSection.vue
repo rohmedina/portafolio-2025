@@ -1,7 +1,7 @@
 <template>
-  <section class="contact" id="contacto">
+  <section class="contact animate-on-scroll" id="contacto">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header animate-on-scroll">
         <span class="section-badge">Contacto</span>
         <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
         <p class="section-description">
@@ -10,7 +10,7 @@
       </div>
 
       <div class="contact-content">
-        <div class="contact-info">
+        <div class="contact-info animate-on-scroll">
           <div class="contact-card">
             <h3 class="contact-card-title">Información de contacto</h3>
 
@@ -79,7 +79,7 @@
           </div>
         </div>
 
-        <div class="contact-form-wrapper">
+        <div class="contact-form-wrapper animate-on-scroll">
           <form class="contact-form" @submit.prevent="handleSubmit">
             <h3 class="form-title">Iniciar Conversación</h3>
 

@@ -1,5 +1,5 @@
 <template>
-  <section class="hero" id="inicio">
+  <section class="hero animate-on-scroll" id="inicio">
     <div class="hero-background">
       <div class="hero-grid"></div>
       <div class="hero-gradient"></div>
@@ -8,12 +8,12 @@
     <div class="container hero-container">
       <div class="hero-content">
         <div class="hero-text">
-          <div class="hero-greeting">
+          <div class="hero-greeting animate-on-scroll">
             <span class="greeting-emoji">👋</span>
             <span class="greeting-text">¡Hola! Soy</span>
           </div>
 
-          <h1 class="hero-title">
+          <h1 class="hero-title animate-on-scroll">
             <span class="name-text">Rodrigo Medina Gatica</span>
             <div class="title-animation">
               <span class="typing-text" ref="typingTextRef">{{ currentText }}</span>
@@ -21,13 +21,13 @@
             </div>
           </h1>
 
-          <p class="hero-description">
+          <p class="hero-description animate-on-scroll">
             Desarrollador Frontend con más de 4 años creando aplicaciones web modernas y escalables.
             Mi especialidad única: combino desarrollo de interfaces excepcionales con
             <strong>automatizaciones N8N</strong> que generan impacto real en los negocios.
           </p>
 
-          <div class="hero-stats">
+          <div class="hero-stats animate-on-scroll">
             <div class="stat-item">
               <span class="stat-icon">📍</span>
               <span class="stat-text">Santiago, Chile</span>
@@ -42,7 +42,7 @@
             </div>
           </div>
 
-          <div class="hero-actions">
+          <div class="hero-actions animate-on-scroll">
             <BaseButton variant="primary" size="medium" to="#proyectos"
             >
               Ver Proyectos <svg
@@ -107,16 +107,16 @@
             </div>
             <div class="avatar-tech-icons">
               <div class="tech-icon tech-icon-1">
-                <img :src="iconAngular" alt="Angular" />
+                <img :src="iconAngular" alt="Angular - Framework de desarrollo web" />
               </div>
               <div class="tech-icon tech-icon-2">
-                <img :src="iconReact" alt="React" />
+                <img :src="iconReact" alt="React - Biblioteca JavaScript para interfaces de usuario" />
               </div>
               <div class="tech-icon tech-icon-3">
-                <img :src="iconVue" alt="Vue.js" />
+                <img :src="iconVue" alt="Vue.js - Framework progresivo de JavaScript" />
               </div>
               <div class="tech-icon tech-icon-4">
-                <img :src="iconJavascript" alt="JavaScript" />
+                <img :src="iconJavascript" alt="JavaScript - Lenguaje de programación web" />
               </div>
             </div>
           </div>
@@ -128,7 +128,47 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+import { useSEO, seoConfigs } from "@/composables/useSEO";
 import BaseButton from "@/components/ui/BaseButton.vue";
+
+// SEO para la página principal
+useSEO(seoConfigs.home);
+
+// Datos estructurados JSON-LD
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rodrigo Medina Gatica",
+  "jobTitle": "Desarrollador Full Stack",
+  "description": "Desarrollador Frontend con más de 4 años creando aplicaciones web modernas y escalables, especializado en Vue.js, React, Node.js y automatizaciones N8N.",
+  "url": "https://rodrigomedina.dev",
+  "sameAs": [
+    "https://github.com/rodrigomedina",
+    "https://linkedin.com/in/rodrigomedina"
+  ],
+  "knowsAbout": [
+    "Vue.js",
+    "React",
+    "Node.js",
+    "TypeScript",
+    "JavaScript",
+    "N8N",
+    "Desarrollo Frontend",
+    "Desarrollo Full Stack"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance"
+  }
+};
+
+// Insertar datos estructurados en el head
+if (typeof document !== 'undefined') {
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(structuredData);
+  document.head.appendChild(script);
+}
 import avatarImage from '@/assets/images/avatar.png';
 import iconAngular from '@/assets/images/angular.svg';
 import iconVue from '@/assets/images/vue-js.svg';

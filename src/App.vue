@@ -38,6 +38,7 @@ import ProjectsSection from "@/components/sections/ProjectsSection.vue";
 import ExperienceSection from "@/components/sections/ExperienceSection.vue";
 import ContactSection from "@/components/sections/ContactSection.vue";
 import AppFooter from "@/components/layout/AppFooter.vue";
+import { useScrollAnimations } from "@/composables/useScrollAnimation";
 
 export default {
   name: "App",
@@ -51,6 +52,14 @@ export default {
     ContactSection,
     AppFooter
   },
+  setup() {
+    // Inicializar animaciones de scroll
+    const { initializeObserver } = useScrollAnimations();
+    
+    return {
+      initializeObserver
+    };
+  }
 };
 </script>
 

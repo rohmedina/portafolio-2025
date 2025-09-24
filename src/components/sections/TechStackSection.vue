@@ -1,7 +1,7 @@
 <template>
-  <section class="tech-stack" id="tech-stack">
+  <section class="tech-stack animate-on-scroll" id="tech-stack">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header animate-on-scroll">
         <span class="section-badge">Tecnologías</span>
         <h2 class="section-title">Mi Stack Tecnológico</h2>
         <p class="section-description">
@@ -10,13 +10,13 @@
       </div>
 
       <!-- Frontend Technologies -->
-      <div class="tech-category">
+      <div class="tech-category animate-on-scroll">
         <h3 class="category-title">
           <span class="category-icon">⚡</span>
           Frontend Development
         </h3>
         <div class="tech-grid">
-          <div class="tech-card expert">
+          <div class="tech-card expert animate-on-scroll">
             <div class="tech-icon"><img :src="iconAngular" alt="Angular" /></div>
             <div class="tech-content">
               <h4 class="tech-name">Angular 12+</h4>
@@ -26,7 +26,7 @@
             </div>
           </div>
 
-          <div class="tech-card advanced">
+          <div class="tech-card advanced animate-on-scroll">
             <div class="tech-icon"><img :src="iconReact" alt="React" /></div>
             <div class="tech-content">
               <h4 class="tech-name">React 18</h4>
@@ -36,7 +36,7 @@
             </div>
           </div>
 
-          <div class="tech-card advanced">
+          <div class="tech-card advanced animate-on-scroll">
             <div class="tech-icon"><img :src="iconVue" alt="Vue.js" /></div>
             <div class="tech-content">
               <h4 class="tech-name">Vue.js 3</h4>
@@ -46,7 +46,7 @@
             </div>
           </div>
 
-          <div class="tech-card expert">
+          <div class="tech-card expert animate-on-scroll">
             <div class="tech-icon"><img :src="iconTypeScript" alt="TypeScript" /></div>
             <div class="tech-content">
               <h4 class="tech-name">TypeScript</h4>
@@ -109,7 +109,7 @@
           </div>
 
           <div class="tech-card advanced">
-            <div class="tech-icon"><img :src="iconGit" alt="Git" /></div>
+            <div class="tech-icon"><img :src="iconGit" alt="Git - Sistema de control de versiones distribuido" /></div>
             <div class="tech-content">
               <h4 class="tech-name">Git & GitLab</h4>
               <span class="tech-level advanced">Avanzado</span>
