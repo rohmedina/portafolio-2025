@@ -14,7 +14,7 @@
         <nav class="nav-desktop">
           <ul class="nav-list">
             <li v-for="section in sections" :key="section.id" class="nav-item">
-              <a :href="`#${section.id}`" @click="handleNavClick(section.id)" 
+              <a :href="`#${section.id}`" @click="handleNavClick(section.id)"
                  :class="{ active: activeSection === section.id }">
                 {{ section.label }}
               </a>
@@ -22,26 +22,14 @@
           </ul>
         </nav>
 
-        <!-- Theme Toggle -->
-        <button class="theme-toggle" @click="toggleTheme" :title="isDarkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'">
-          <svg v-if="isDarkMode" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
-
         <!-- Mobile Menu Button -->
-        <button class="mobile-menu-btn" @click="toggleMobileMenu" :class="{ active: isMobileMenuOpen }">
+        <button
+          class="mobile-menu-btn"
+          @click.stop="toggleMobileMenu"
+          :class="{ active: isMobileMenuOpen }"
+          aria-label="Toggle mobile menu"
+          :aria-expanded="isMobileMenuOpen"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -49,10 +37,10 @@
       </div>
 
       <!-- Mobile Navigation -->
-      <nav class="nav-mobile" :class="{ active: isMobileMenuOpen }">
+      <nav class="nav-mobile" :class="{ active: isMobileMenuOpen }" @click.stop>
         <ul class="nav-list-mobile">
           <li v-for="section in sections" :key="section.id" class="nav-item-mobile">
-            <a :href="`#${section.id}`" @click="handleNavClick(section.id)" 
+            <a :href="`#${section.id}`" @click="handleNavClick(section.id)"
                :class="{ active: activeSection === section.id }">
               {{ section.label }}
             </a>
@@ -64,11 +52,10 @@
 </template>
 
 <script setup lang="ts">
-import { useNavigation, useMobileMenu, useTheme } from '@/composables/useNavigation'
+import { useNavigation, useMobileMenu } from '@/composables/useNavigation'
 
 const { activeSection, isScrolled, sections, scrollToSection } = useNavigation()
 const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useMobileMenu()
-const { isDarkMode, toggleTheme } = useTheme()
 
 // Handle navigation click
 const handleNavClick = (sectionId: string) => {
@@ -198,31 +185,46 @@ const handleNavClick = (sectionId: string) => {
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
   gap: 4px;
+  z-index: 1001;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(var(--primary-rgb), 0.1);
 }
 
 .mobile-menu-btn span {
-  width: 25px;
+  width: 24px;
   height: 3px;
   background: var(--text-primary);
   border-radius: 2px;
   transition: all 0.3s ease;
+  transform-origin: center;
+  display: block;
 }
 
 .mobile-menu-btn.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .mobile-menu-btn.active span:nth-child(2) {
   opacity: 0;
+  transform: scale(0);
 }
 
 .mobile-menu-btn.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Mobile Navigation */
@@ -237,12 +239,15 @@ const handleNavClick = (sectionId: string) => {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   transform: translateY(-100%);
   opacity: 0;
+  visibility: hidden;
   transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .nav-mobile.active {
   transform: translateY(0);
   opacity: 1;
+  visibility: visible;
 }
 
 .nav-list-mobile {
@@ -295,9 +300,14 @@ const handleNavClick = (sectionId: string) => {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 998px) {
   .container {
     padding: 0 1rem;
+  }
+
+  .header-content {
+    height: 70px;
+    gap: 1rem;
   }
 
   .nav-desktop {
@@ -305,26 +315,47 @@ const handleNavClick = (sectionId: string) => {
   }
 
   .theme-toggle {
-    margin-right: 0.5rem;
+    display: none; /* Ocultar en móvil para más espacio */
   }
 
   .mobile-menu-btn {
     display: flex;
+    flex-shrink: 0;
   }
 
   .nav-mobile {
     display: block;
   }
 
-  .header-content {
-    height: 70px;
+  .logo {
+    flex: 1;
   }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .header-content {
+    height: 65px;
+    gap: 0.5rem;
+  }
+
   .logo-text,
   .logo-accent {
     font-size: 1.3rem;
+  }
+
+  .mobile-menu-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+  }
+
+  .mobile-menu-btn span {
+    width: 20px;
+    height: 2px;
   }
 
   .nav-item-mobile a {

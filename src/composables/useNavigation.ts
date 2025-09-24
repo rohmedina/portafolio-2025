@@ -110,7 +110,10 @@ export function useMobileMenu() {
   // Close menu when clicking outside
   const handleClickOutside = (event: Event): void => {
     const target = event.target as Element
-    if (isMobileMenuOpen.value && !target.closest('.header')) {
+    if (isMobileMenuOpen.value && 
+        !target.closest('.header') && 
+        !target.closest('.mobile-menu-btn') &&
+        !target.closest('.nav-mobile')) {
       closeMobileMenu()
     }
   }
@@ -123,8 +126,11 @@ export function useMobileMenu() {
   }
 
   onMounted(() => {
-    document.addEventListener('click', handleClickOutside)
-    document.addEventListener('keydown', handleEscapeKey)
+    // Use setTimeout to ensure DOM is ready
+    setTimeout(() => {
+      document.addEventListener('click', handleClickOutside)
+      document.addEventListener('keydown', handleEscapeKey)
+    }, 100)
   })
 
   onUnmounted(() => {

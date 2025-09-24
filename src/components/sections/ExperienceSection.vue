@@ -219,6 +219,7 @@
   border-radius: 50%;
   border: 4px solid #ffffff;
   position: relative;
+  top: 20px;
   left: 8px;
   z-index: 2;
   box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
@@ -249,7 +250,7 @@
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-right: 8px solid var(--bg-primary);
+  border-right: 8px solid var(--border-color);
 }
 
 .timeline-content:hover {
