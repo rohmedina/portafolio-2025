@@ -118,36 +118,40 @@ app.post('/api/contact', contactLimiter, contactValidation, async (req, res) => 
       source: 'portfolio-backend'
     };
 
-    console.log('📤 Enviando datos a N8N:', {
-      ...contactData,
-      message: contactData.message.substring(0, 50) + '...'
-    });
-
     // Configurar axios para ignorar certificados auto-firmados en desarrollo
     const httpsAgent = new https.Agent({
       rejectUnauthorized: false
     })
 
-    // Enviar a N8N usando GET con query parameters simplificados
+    // Configurar datos para query parameters
     const queryParams = new URLSearchParams({
       name: contactData.name,
       email: contactData.email,
       subject: contactData.subject || 'Contacto desde Portfolio',
-      message: contactData.message
+      message: contactData.message,
+      timestamp: contactData.timestamp,
+      clientIP: contactData.clientIP,
+      userAgent: contactData.userAgent,
+      source: contactData.source
     });
 
+    console.log('📤 Enviando datos a N8N via GET...');
+    console.log('🔗 URL:', `${process.env.N8N_WEBHOOK_URL}?${queryParams.toString().substring(0, 100)}...`);
+
+    // Enviar usando GET con query parameters
     const n8nResponse = await axios.get(
       `${process.env.N8N_WEBHOOK_URL}?${queryParams.toString()}`,
       {
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'User-Agent': 'Portfolio-Backend/1.0'
         },
-        timeout: 30000, // 30 segundos
+        timeout: 30000,
         httpsAgent: httpsAgent
       }
     );
 
-    console.log('✅ Respuesta de N8N:', n8nResponse.status);
+    console.log('✅ N8N respondió:', n8nResponse.status);
 
     // Responder al cliente
     res.json({
