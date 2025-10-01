@@ -290,7 +290,7 @@ const handleSubmit = async (): Promise<void> => {
   try {
     // URL del backend Node.js
     const backendUrl = import.meta.env.PROD 
-      ? 'https://rmedinadev.com/api/contact'  // Producción
+      ? 'https://portafolio-2025-production.up.railway.app/api/contact'  // Producción
       : 'http://localhost:3001/api/contact'   // Desarrollo
 
     const formData = {
