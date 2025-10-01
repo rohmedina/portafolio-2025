@@ -153,6 +153,18 @@ app.post('/api/contact', contactLimiter, contactValidation, async (req, res) => 
 
     console.log('✅ N8N respondió:', n8nResponse.status);
 
+    // Verificar si n8n devolvió errores de validación
+    if (n8nResponse.data && n8nResponse.data.success === false) {
+      console.log('❌ N8N devolvió error de validación:', n8nResponse.data);
+      return res.status(400).json({
+        success: false,
+        error: 'Error en validación de datos',
+        message: n8nResponse.data.message || 'Los datos del formulario no son válidos',
+        details: n8nResponse.data.details || [],
+        code: 'VALIDATION_ERROR'
+      });
+    }
+
     // Responder al cliente
     res.json({
       success: true,
