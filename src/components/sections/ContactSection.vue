@@ -274,7 +274,7 @@ const isFormValid = computed((): boolean => {
          !errors.message
 })
 
-// Handle form submission
+// Handle form submission - VERSIÓN CON BACKEND NODE.JS
 const handleSubmit = async (): Promise<void> => {
   validateForm()
 
@@ -288,31 +288,81 @@ const handleSubmit = async (): Promise<void> => {
   submitMessage.value = ''
 
   try {
-    // Simulate API call
-    await new Promise<void>((resolve) => setTimeout(resolve, 2000))
+    // URL del backend Node.js
+    const backendUrl = import.meta.env.PROD 
+      ? 'https://rmedinadev.com/api/contact'  // Producción
+      : 'http://localhost:3001/api/contact'   // Desarrollo
 
-    // Reset form
-    form.name = ''
-    form.email = ''
-    form.subject = ''
-    form.message = ''
+    const formData = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      subject: form.subject,
+      message: form.message.trim()
+    }
 
-    submitMessage.value = '¡Mensaje enviado exitosamente! Te responderé pronto.'
-    submitStatus.value = 'success'
+    console.log('🚀 Enviando al backend Node.js:', formData)
+    console.log('📍 URL del backend:', backendUrl)
 
-    // Clear success message after 5 seconds
-    setTimeout(() => {
-      submitMessage.value = ''
-      submitStatus.value = ''
-    }, 5000)
+    const response = await fetch(backendUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
 
-  } catch {
-    submitMessage.value = 'Error al enviar el mensaje. Inténtalo nuevamente.'
+    console.log('📥 Status de respuesta:', response.status)
+    console.log('📄 Content-Type:', response.headers.get('content-type'))
+
+    const result = await response.json()
+
+    if (response.ok && result.success) {
+      console.log('✅ Éxito:', result)
+
+      // Limpiar formulario
+      Object.keys(form).forEach(key => {
+        form[key as keyof FormData] = ''
+      })
+
+      submitMessage.value = result.message || 'Mensaje enviado correctamente. Te contactaré pronto.'
+      submitStatus.value = 'success'
+    } else {
+      // Manejar errores específicos del backend
+      const errorMessage = result.error || `Error HTTP: ${response.status}`
+      throw new Error(errorMessage)
+    }
+
+  } catch (error: unknown) {
+    console.error('❌ Error al enviar formulario:', error)
+    
+    // Mensajes de error más específicos
+    let errorMessage = 'Error al enviar el mensaje. Por favor intenta nuevamente.'
+    
+    const errorString = error instanceof Error ? error.message : String(error)
+    
+    if (errorString.includes('Failed to fetch') || errorString.includes('NetworkError')) {
+      errorMessage = 'Error de conexión. Verifica tu conexión a internet e intenta nuevamente.'
+    } else if (errorString.includes('Demasiadas solicitudes')) {
+      errorMessage = 'Has enviado muchos mensajes. Espera unos minutos antes de intentar nuevamente.'
+    } else if (errorString.includes('Datos de entrada inválidos')) {
+      errorMessage = 'Por favor verifica que todos los campos estén correctamente completados.'
+    } else if (errorString.includes('SERVICE_UNAVAILABLE')) {
+      errorMessage = 'Servicio temporalmente no disponible. Intenta nuevamente en unos minutos.'
+    }
+    
+    submitMessage.value = errorMessage
     submitStatus.value = 'error'
   } finally {
     isSubmitting.value = false
+
+    setTimeout(() => {
+      submitMessage.value = ''
+      submitStatus.value = ''
+    }, 8000)
   }
 }
+
 </script>
 
 <style scoped>

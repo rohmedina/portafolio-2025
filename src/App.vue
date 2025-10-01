@@ -55,7 +55,7 @@ export default {
   setup() {
     // Inicializar animaciones de scroll
     const { initializeObserver } = useScrollAnimations();
-    
+
     return {
       initializeObserver
     };

@@ -16,6 +16,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@vueuse/head": "^2.0.0",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"

@@ -30,11 +30,26 @@
     <!-- Additional SEO -->
     <meta name="theme-color" content="#3B82F6">
     <link rel="canonical" href="https://rodrigomedina.dev/">
-    <script type="module" crossorigin src="/portafolio-2025/assets/index-0me4fd7i.js"></script>
-    <link rel="modulepreload" crossorigin href="/portafolio-2025/assets/vendor-BoeeTYGF.js">
-    <link rel="modulepreload" crossorigin href="/portafolio-2025/assets/utils-CDuPzAw4.js">
-    <link rel="stylesheet" crossorigin href="/portafolio-2025/assets/index-BcRfopXt.css">
-  <link rel="manifest" href="/portafolio-2025/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/portafolio-2025/registerSW.js"></script></head>
+    
+    <!-- GitHub Pages SPA redirect script -->
+    <script>
+      // Maneja la redirección de GitHub Pages para SPAs
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/assets/index-ZtzD3FKu.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-CVUsxBDJ.js">
+    <link rel="modulepreload" crossorigin href="/assets/utils-B2md0IIE.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-B5BSlZ0-.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
   <body>
     <div id="app"></div>
   </body>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Rodrigo Medina - Portfolio</title>
+  <script>
+    // Redirección para servidores que no manejan SPA correctamente
+    // Simplificado para funcionar con cualquier configuración de servidor
+    var l = window.location;
+    var path = l.pathname;
+    
+    // Si no estamos en la raíz, redirigir al index con la ruta como hash
+    if (path !== '/') {
+      l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/#' + path);
+    }
+  </script>
+</head>
+<body>
+  <p>Redirigiendo...</p>
+</body>
+</html>

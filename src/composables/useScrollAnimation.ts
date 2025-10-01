@@ -1,10 +1,10 @@
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, type Ref } from 'vue'
 
 export function useScrollAnimation() {
   const isVisible = ref(false)
-  const elementRef = ref(null)
+  const elementRef: Ref<HTMLElement | null> = ref(null)
 
-  const observerCallback = (entries) => {
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         isVisible.value = true
@@ -13,7 +13,7 @@ export function useScrollAnimation() {
     })
   }
 
-  const observer = ref(null)
+  const observer: Ref<IntersectionObserver | null> = ref(null)
 
   onMounted(() => {
     if (elementRef.value) {
@@ -40,19 +40,20 @@ export function useScrollAnimation() {
 
 // Composable for multiple elements animation
 export function useScrollAnimations() {
-  const animatedElements = ref([])
-  const observer = ref(null)
+  const animatedElements: Ref<HTMLElement[]> = ref([])
+  const observer: Ref<IntersectionObserver | null> = ref(null)
 
-  const observerCallback = (entries) => {
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animated')
-        const delay = entry.target.dataset.delay || 0
+        const element = entry.target as HTMLElement
+        const delay = element.dataset.delay || '0'
         
         setTimeout(() => {
-          entry.target.style.opacity = '1'
-          entry.target.style.transform = 'translateY(0)'
-        }, delay)
+          element.style.opacity = '1'
+          element.style.transform = 'translateY(0)'
+        }, parseInt(delay))
       }
     })
   }
@@ -66,9 +67,10 @@ export function useScrollAnimations() {
     // Observe all elements with animate-on-scroll class
     const elements = document.querySelectorAll('.animate-on-scroll')
     elements.forEach((element, index) => {
-      element.dataset.delay = index * 100 // Stagger animation
-      observer.value.observe(element)
-      animatedElements.value.push(element)
+      const htmlElement = element as HTMLElement
+      htmlElement.dataset.delay = (index * 100).toString() // Stagger animation
+      observer.value?.observe(htmlElement)
+      animatedElements.value.push(htmlElement)
     })
   }
 
@@ -80,7 +82,7 @@ export function useScrollAnimations() {
   onUnmounted(() => {
     if (observer.value) {
       animatedElements.value.forEach(element => {
-        observer.value.unobserve(element)
+        observer.value?.unobserve(element)
       })
     }
   })
