@@ -5,7 +5,7 @@ export function useScrollAnimation() {
   const elementRef: Ref<HTMLElement | null> = ref(null)
 
   const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
+    entries.forEach((entry: IntersectionObserverEntry) => {
       if (entry.isIntersecting) {
         isVisible.value = true
         entry.target.classList.add('animated')
@@ -22,7 +22,9 @@ export function useScrollAnimation() {
         rootMargin: '0px 0px -50px 0px'
       })
       
-      observer.value.observe(elementRef.value)
+      if (observer.value && elementRef.value) {
+        observer.value.observe(elementRef.value)
+      }
     }
   })
 
@@ -44,11 +46,11 @@ export function useScrollAnimations() {
   const observer: Ref<IntersectionObserver | null> = ref(null)
 
   const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
+    entries.forEach((entry: IntersectionObserverEntry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animated')
         const element = entry.target as HTMLElement
-        const delay = element.dataset.delay || '0'
+        const delay = (element as HTMLElement).dataset?.delay || '0'
         
         setTimeout(() => {
           element.style.opacity = '1'
@@ -66,11 +68,15 @@ export function useScrollAnimations() {
 
     // Observe all elements with animate-on-scroll class
     const elements = document.querySelectorAll('.animate-on-scroll')
-    elements.forEach((element, index) => {
+    elements.forEach((element: Element, index: number) => {
       const htmlElement = element as HTMLElement
-      htmlElement.dataset.delay = (index * 100).toString() // Stagger animation
-      observer.value?.observe(htmlElement)
-      animatedElements.value.push(htmlElement)
+      if (htmlElement.dataset) {
+        htmlElement.dataset.delay = (index * 100).toString() // Stagger animation
+      }
+      if (observer.value) {
+        observer.value.observe(htmlElement)
+        animatedElements.value.push(htmlElement)
+      }
     })
   }
 
@@ -81,8 +87,10 @@ export function useScrollAnimations() {
 
   onUnmounted(() => {
     if (observer.value) {
-      animatedElements.value.forEach(element => {
-        observer.value?.unobserve(element)
+      animatedElements.value.forEach((element: HTMLElement) => {
+        if (observer.value) {
+          observer.value.unobserve(element)
+        }
       })
     }
   })
