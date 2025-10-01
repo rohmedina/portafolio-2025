@@ -328,9 +328,17 @@ const handleSubmit = async (): Promise<void> => {
       submitMessage.value = result.message || 'Mensaje enviado correctamente. Te contactaré pronto.'
       submitStatus.value = 'success'
     } else {
-      // Manejar errores específicos del backend
-      const errorMessage = result.error || `Error HTTP: ${response.status}`
-      throw new Error(errorMessage)
+      // Manejar diferentes tipos de error del backend
+      if (result.code === 'VALIDATION_ERROR') {
+        // Error específico de validación de n8n
+        const errorDetails = Array.isArray(result.details) ? result.details.join(', ') : ''
+        submitMessage.value = `Error de validación: ${result.message}${errorDetails ? ' (' + errorDetails + ')' : ''}`
+      } else if (result.code === 'SERVICE_UNAVAILABLE') {
+        submitMessage.value = 'Servicio temporalmente no disponible. Intenta en unos minutos.'
+      } else {
+        submitMessage.value = result.message || 'Error al enviar el mensaje. Intenta nuevamente.'
+      }
+      submitStatus.value = 'error'
     }
 
   } catch (error: unknown) {
