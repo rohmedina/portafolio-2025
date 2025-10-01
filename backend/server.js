@@ -128,16 +128,12 @@ app.post('/api/contact', contactLimiter, contactValidation, async (req, res) => 
       rejectUnauthorized: false
     })
 
-    // Enviar a N8N usando GET con query parameters
+    // Enviar a N8N usando GET con query parameters simplificados
     const queryParams = new URLSearchParams({
       name: contactData.name,
       email: contactData.email,
       subject: contactData.subject || 'Contacto desde Portfolio',
-      message: contactData.message,
-      timestamp: contactData.timestamp,
-      clientIP: contactData.clientIP,
-      userAgent: contactData.userAgent,
-      source: contactData.source
+      message: contactData.message
     });
 
     const n8nResponse = await axios.get(
