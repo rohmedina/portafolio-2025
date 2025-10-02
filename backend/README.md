@@ -41,7 +41,7 @@ Edita el archivo `.env`:
 PORT=3001
 
 # URL del webhook de N8N
-N8N_WEBHOOK_URL=https://n8n.cvalinstante.com/webhook/contacto-formulario
+N8N_WEBHOOK_URL=https://n8n.rmedinadev.com/webhook/contacto-formulario
 
 # Configuración CORS
 FRONTEND_URL=https://rmedinadev.com
