@@ -3,10 +3,11 @@
 .hero {
   position: relative;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
   overflow: hidden;
   background: var(--color-background);
+  /* Empuja el hero bajo el header para que el fondo se vea detrás */
+  margin-top: -80px;
+  padding-top: 80px;
 }
 
 /* Background Effects */
@@ -252,7 +253,7 @@
   justify-content: center;
   overflow: hidden;
   backdrop-filter: blur(10px);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -262,7 +263,7 @@
 
 .avatar-image:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 
+  box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -276,9 +277,9 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, 
-    var(--color-primary), 
-    var(--color-secondary), 
+  background: linear-gradient(45deg,
+    var(--color-primary),
+    var(--color-secondary),
     var(--color-primary));
   border-radius: 50%;
   z-index: -1;
@@ -427,6 +428,11 @@
 /* ===== RESPONSIVE DESIGN ===== */
 
 @media (max-width: 768px) {
+  .hero {
+    /* Altura del header en tablet/móvil: 70px */
+    margin-top: -70px;
+    padding-top: 70px;
+  }
   .hero-content {
     grid-template-columns: 1fr;
     gap: var(--space-24);
@@ -452,6 +458,11 @@
 }
 
 @media (max-width: 480px) {
+  .hero {
+    /* Altura del header en móvil pequeño: 65px */
+    margin-top: -65px;
+    padding-top: 65px;
+  }
   .avatar-container {
     width: 250px;
     height: 250px;

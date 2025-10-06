@@ -26,11 +26,11 @@ export function setupLazyLoading() {
  */
 export function preloadCriticalResources() {
   const criticalResources = [
-    '/src/assets/icons/angular.svg',
-    '/src/assets/icons/react.svg',
-    '/src/assets/icons/vue.svg',
-    '/src/assets/icons/javascript.svg',
-    '/src/assets/icons/git.svg'
+    new URL('../assets/images/angular.svg', import.meta.url).href,
+    new URL('../assets/images/react.svg', import.meta.url).href,
+    new URL('../assets/images/vue-js.svg', import.meta.url).href,
+    new URL('../assets/images/javascript.svg', import.meta.url).href,
+    new URL('../assets/images/git.svg', import.meta.url).href
   ];
 
   criticalResources.forEach(resource => {

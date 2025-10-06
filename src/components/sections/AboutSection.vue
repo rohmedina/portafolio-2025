@@ -11,40 +11,50 @@
           <div class="story-text">
             <div class="intro-highlight animate-on-scroll">
               <p class="intro-text">
-                Soy un <strong>Desarrollador Frontend</strong> con más de
-                <strong>4 años</strong> transformando ideas en aplicaciones web que realmente
-                importan para los negocios.
+                Hace más de <strong>5 años</strong> descubrí que mi verdadera pasión no es solo
+                escribir código, sino
+                <strong>resolver problemas reales que impactan los negocios</strong>. Como
+                Desarrollador Frontend, transformo ideas complejas en aplicaciones web que importan
+                para las empresas y sus usuarios.
               </p>
             </div>
 
             <p class="animate-on-scroll">
-              Mi trayectoria incluye experiencia en empresas como <strong>Codelabs</strong>,
-              <strong>TAAG Genetics</strong>, <strong>Entel</strong> y
-              <strong>Desarroya Limitada</strong>, donde he optimizado interfaces logrando mejoras
-              del 20% en tiempos de carga y aumentos del 25% en PageSpeed.
+              He trabajado en <strong>Codelabs</strong>, <strong>TAAG Genetics</strong>,
+              <strong>Entel</strong> y <strong>Desarroya Limitada</strong>, donde optimicé la
+              experiencia completa del usuario. Logré mejoras del
+              <strong>20% en tiempos de carga</strong> y aumentos del
+              <strong>25% en PageSpeed</strong>, con impacto directo en retención y satisfacción.
             </p>
 
             <p class="animate-on-scroll">
-              Actualmente trabajo como <strong>freelancer independiente</strong>, donde he entregado
-              más de 5 aplicaciones web personalizadas para pymes, logrando aumentos del 30% en
-              captación de clientes. Mi especialización en <strong>automatizaciones N8N</strong> me
-              permite ofrecer soluciones únicas que reducen hasta 10 horas semanales de trabajo
-              manual.
+              Mi punto de inflexión llegó con <strong>N8N y las automatizaciones</strong>. Como
+              freelancer, entregué más de <strong>5 aplicaciones</strong> a PyMEs y aumenté un
+              <strong>30% su captación de clientes</strong>. Mi diferencial:
+              <strong
+                >automatizaciones que liberan hasta 10 horas semanales de trabajo manual</strong
+              >
+              para que se enfoquen en crecer.
             </p>
 
             <p class="animate-on-scroll">
-              Soy <strong>Analista Programador Computacional</strong> graduado de
-              <strong>Duoc UC</strong> y completé el programa <strong>Talento Digital</strong>.
-              Recientemente obtuve la certificación <strong>Product Owner</strong>, combinando
-              visión técnica con estrategia de producto.
+              Soy Analista Programador (Duoc UC), egresado de Talento Digital y certificado como
+              Product Owner. No basta con que la tecnología funcione: debe
+              <strong>generar valor real y medible</strong>.
             </p>
 
             <div class="values-highlight animate-on-scroll">
+              <h3>Más allá del código</h3>
               <p>
-                Mi enfoque combina tecnología, usabilidad y valor de negocio. Cada proyecto que
-                desarrollo está orientado a
-                <strong>generar resultados tangibles y medibles</strong> para mis clientes,
-                mejorando tanto la experiencia de usuario como los indicadores de negocio.
+                Mi filosofía es simple: la mejor tecnología es la que se vuelve invisible para el
+                usuario. Cada línea de código y cada automatización que diseño busca que alguien
+                haga su trabajo más fácil y se concentre en lo que importa para su negocio.
+              </p>
+              <p>
+                Fuera del trabajo, suelo escaparme a hacer trekking por la cordillera, devorar
+                libros y mangas sin discriminar género, y cocinar mi terapia anti‑estrés. Cuando no
+                cocino, exploro nuevos lugares para comer en Santiago. Mantener la curiosidad en
+                distintas áreas me ayuda a traer perspectivas frescas a cada proyecto.
               </p>
             </div>
           </div>
@@ -156,10 +166,6 @@
   margin: 0;
   position: relative;
   z-index: 1;
-}
-
-.story-text p {
-  margin-bottom: 24px;
 }
 
 .story-text strong {

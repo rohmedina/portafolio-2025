@@ -20,6 +20,11 @@ body {
   padding-top: 80px; /* Space for fixed header */
 }
 
+/* Compensar header fijo al navegar a secciones por ancla */
+section {
+  scroll-margin-top: 90px; /* Ajuste para evitar que el header tape el inicio */
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;

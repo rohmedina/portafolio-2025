@@ -14,7 +14,7 @@
         <nav class="nav-desktop">
           <ul class="nav-list">
             <li v-for="section in sections" :key="section.id" class="nav-item">
-              <a :href="`#${section.id}`" @click="handleNavClick(section.id)"
+              <a :href="`#${section.id}`" @click.prevent="handleNavClick(section.id)"
                  :class="{ active: activeSection === section.id }">
                 {{ section.label }}
               </a>
@@ -40,7 +40,7 @@
       <nav class="nav-mobile" :class="{ active: isMobileMenuOpen }" @click.stop>
         <ul class="nav-list-mobile">
           <li v-for="section in sections" :key="section.id" class="nav-item-mobile">
-            <a :href="`#${section.id}`" @click="handleNavClick(section.id)"
+            <a :href="`#${section.id}`" @click.prevent="handleNavClick(section.id)"
                :class="{ active: activeSection === section.id }">
               {{ section.label }}
             </a>
@@ -71,14 +71,14 @@ const handleNavClick = (sectionId: string) => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--color-background);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--color-border);
   transition: all 0.3s ease;
 }
 
 .header.scrolled {
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--color-background-soft);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -106,7 +106,7 @@ const handleNavClick = (sectionId: string) => {
 .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--color-heading);
 }
 
 .logo-accent {
@@ -131,7 +131,7 @@ const handleNavClick = (sectionId: string) => {
 
 .nav-item a {
   text-decoration: none;
-  color: var(--text-secondary);
+  color: var(--color-text);
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -215,7 +215,7 @@ const handleNavClick = (sectionId: string) => {
 }
 
 .mobile-menu-btn.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
 .mobile-menu-btn.active span:nth-child(2) {
@@ -224,7 +224,7 @@ const handleNavClick = (sectionId: string) => {
 }
 
 .mobile-menu-btn.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(3px, -3px);
 }
 
 /* Mobile Navigation */
@@ -234,9 +234,9 @@ const handleNavClick = (sectionId: string) => {
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--color-background);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--color-border);
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
@@ -257,7 +257,7 @@ const handleNavClick = (sectionId: string) => {
 }
 
 .nav-item-mobile {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .nav-item-mobile:last-child {
@@ -267,7 +267,7 @@ const handleNavClick = (sectionId: string) => {
 .nav-item-mobile a {
   display: block;
   text-decoration: none;
-  color: var(--text-secondary);
+  color: var(--color-text);
   font-weight: 500;
   padding: 1rem 2rem;
   transition: all 0.3s ease;
@@ -279,25 +279,7 @@ const handleNavClick = (sectionId: string) => {
   background: rgba(var(--primary-rgb), 0.05);
 }
 
-/* Dark Mode Support */
-[data-theme="dark"] .header {
-  background: rgba(17, 17, 17, 0.95);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .header.scrolled {
-  background: rgba(17, 17, 17, 0.98);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .nav-mobile {
-  background: rgba(17, 17, 17, 0.98);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .nav-item-mobile {
-  border-bottom-color: rgba(255, 255, 255, 0.05);
-}
+/* Dark Mode Support handled by global variables in base.css */
 
 /* Responsive Design */
 @media (max-width: 998px) {

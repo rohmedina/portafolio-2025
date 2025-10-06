@@ -43,11 +43,15 @@ export function useNavigation() {
   const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId)
     if (element) {
-      const headerHeight = 80
-      const elementPosition = element.offsetTop - headerHeight
-      
+      // Detectar altura real del header fijo
+      const headerEl = document.querySelector('.header') as HTMLElement | null
+      const headerHeight = headerEl ? headerEl.offsetHeight : 80
+      // Compensar posible margen extra en mobile
+      const extraOffset = window.innerWidth <= 768 ? 10 : 0
+      const elementPosition = element.offsetTop - headerHeight - extraOffset
+
       window.scrollTo({
-        top: elementPosition,
+        top: Math.max(elementPosition, 0),
         behavior: 'smooth'
       })
     }

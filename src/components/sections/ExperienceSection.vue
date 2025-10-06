@@ -2,11 +2,98 @@
   <section class="experience-section animate-on-scroll" id="experiencia">
     <div class="container">
       <div class="section-header animate-on-scroll">
+        <div class="section-badge">Experiencia Profesional</div>
         <h2 class="section-title">Experiencia Profesional</h2>
         <p class="section-subtitle">Mi trayectoria profesional en desarrollo web</p>
       </div>
 
       <div class="timeline">
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="timeline-role">Desarrollador</h3>
+              <div class="timeline-company">Freelance</div>
+              <div class="timeline-period">Enero 2020 - Presente</div>
+            </div>
+            <div class="timeline-description">
+              <p>
+                Desarrollo de aplicaciones web completas y automatizaciones de procesos para
+                diversos clientes, desde startups hasta empresas establecidas. Experiencia con
+                proyectos de frontend, backend, automatización y optimización de sitios con
+                WordPress.
+              </p>
+            </div>
+            <div class="timeline-achievements">
+              <h4 class="achievements-title">Logros destacados:</h4>
+              <ul class="achievements-list">
+                <li>15+ proyectos web completados exitosamente (frontend, backend y fullstack).</li>
+                <li>Implementación de sistemas de pago online</li>
+                <li>Desarrollo de dashboards administrativos</li>
+                <li>
+                  Integración de automatizaciones con N8N que redujeron hasta 10h semanales de
+                  tareas manuales.
+                </li>
+                <li>
+                  Creación y optimización de sitios web y e-commerce WordPress para pymes, mejorando
+                  conversión y performance.
+                </li>
+                <li>
+                  Integración con servicios de terceros (APIs externas, Google Sheets, WhatsApp,
+                  etc.).
+                </li>
+              </ul>
+            </div>
+            <div class="timeline-tech">
+              <span class="tech-pill">Vue.js</span>
+              <span class="tech-pill">Laravel</span>
+              <span class="tech-pill">MySQL</span>
+              <span class="tech-pill">AWS</span>
+              <span class="tech-pill">Git</span>
+              <span class="tech-pill">N8N</span>
+              <span class="tech-pill">WordPress</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="timeline-role">Desarrollador Front-End</h3>
+              <div class="timeline-company">Coderlab SpA</div>
+              <div class="timeline-period">Noviembre 2024 - Julio 2025</div>
+            </div>
+            <div class="timeline-description">
+              <p>
+                Descripción: Desarrollo de interfaces y optimización de rendimiento en aplicaciones
+                web empresariales con Angular 14, trabajando en equipos ágiles bajo Scrum.
+              </p>
+            </div>
+            <div class="timeline-achievements">
+              <h4 class="achievements-title">Logros destacados:</h4>
+              <ul class="achievements-list">
+                <li>20% de mejora en tiempos de carga de interfaces clave</li>
+                <li>Entrega continua en sprints, cumpliendo plazos y estándares de calidad</li>
+                <li>Colaboración con UX/UI para interfaces accesibles y consistentes</li>
+                <li>
+                  Implementación de buenas prácticas de performance (lazy loading, code splitting,
+                  optimización de assets)
+                </li>
+              </ul>
+            </div>
+            <div class="timeline-tech">
+              <span class="tech-pill">Angular</span>
+              <span class="tech-pill">TypeScript</span>
+              <span class="tech-pill">CSS3</span>
+            </div>
+          </div>
+        </div>
+
         <div class="timeline-item animate-on-scroll">
           <div class="timeline-marker">
             <div class="timeline-dot"></div>
@@ -73,41 +160,6 @@
               <span class="tech-pill">Node.js</span>
               <span class="tech-pill">GraphQL</span>
               <span class="tech-pill">Docker</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item animate-on-scroll">
-          <div class="timeline-marker">
-            <div class="timeline-dot"></div>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3 class="timeline-role">Desarrollador Full Stack</h3>
-              <div class="timeline-company">Freelance</div>
-              <div class="timeline-period">Enero 2021 - Marzo 2022</div>
-            </div>
-            <div class="timeline-description">
-              <p>
-                Desarrollo de aplicaciones web completas para diversos clientes, desde startups
-                hasta empresas establecidas.
-              </p>
-            </div>
-            <div class="timeline-achievements">
-              <h4 class="achievements-title">Logros destacados:</h4>
-              <ul class="achievements-list">
-                <li>15+ proyectos web completados exitosamente</li>
-                <li>Implementación de sistemas de pago online</li>
-                <li>Desarrollo de dashboards administrativos</li>
-                <li>Integración con servicios de terceros</li>
-              </ul>
-            </div>
-            <div class="timeline-tech">
-              <span class="tech-pill">Vue.js</span>
-              <span class="tech-pill">Laravel</span>
-              <span class="tech-pill">MySQL</span>
-              <span class="tech-pill">AWS</span>
-              <span class="tech-pill">Git</span>
             </div>
           </div>
         </div>
@@ -415,10 +467,6 @@
 
   .timeline-content {
     padding: 1.5rem;
-  }
-
-  .timeline-content::before {
-    left: -6px;
   }
 
   .timeline-role {

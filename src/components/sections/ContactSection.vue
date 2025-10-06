@@ -289,7 +289,7 @@ const handleSubmit = async (): Promise<void> => {
 
   try {
     // URL del backend Node.js
-    const backendUrl = import.meta.env.PROD 
+    const backendUrl = import.meta.env.PROD
       ? 'https://portafolio-2025-production.up.railway.app/api/contact'  // Producción
       : 'http://localhost:3001/api/contact'   // Desarrollo
 
@@ -343,12 +343,12 @@ const handleSubmit = async (): Promise<void> => {
 
   } catch (error: unknown) {
     console.error('❌ Error al enviar formulario:', error)
-    
+
     // Mensajes de error más específicos
     let errorMessage = 'Error al enviar el mensaje. Por favor intenta nuevamente.'
-    
+
     const errorString = error instanceof Error ? error.message : String(error)
-    
+
     if (errorString.includes('Failed to fetch') || errorString.includes('NetworkError')) {
       errorMessage = 'Error de conexión. Verifica tu conexión a internet e intenta nuevamente.'
     } else if (errorString.includes('Demasiadas solicitudes')) {
@@ -358,7 +358,7 @@ const handleSubmit = async (): Promise<void> => {
     } else if (errorString.includes('SERVICE_UNAVAILABLE')) {
       errorMessage = 'Servicio temporalmente no disponible. Intenta nuevamente en unos minutos.'
     }
-    
+
     submitMessage.value = errorMessage
     submitStatus.value = 'error'
   } finally {
@@ -500,6 +500,8 @@ const handleSubmit = async (): Promise<void> => {
   color: var(--text-secondary);
   text-decoration: none;
   transition: all var(--transition-duration);
+  max-width: 100%;
+  flex-wrap: nowrap;
 }
 
 .social-contact-btn:hover {
@@ -514,6 +516,7 @@ const handleSubmit = async (): Promise<void> => {
   padding: 2.5rem;
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--border-color);
+  overflow: hidden;
 }
 
 .form-title {
@@ -637,7 +640,7 @@ const handleSubmit = async (): Promise<void> => {
 @media (max-width: 768px) {
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .form-row {
@@ -648,6 +651,29 @@ const handleSubmit = async (): Promise<void> => {
   .contact-card,
   .contact-form-wrapper {
     padding: 1.5rem;
+  }
+
+  /* Evitar que los enlaces largos se salgan del viewport */
+  .social-contact-btn {
+    flex-wrap: wrap;
+  }
+  .social-contact-btn span {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .contact-method {
+    flex-wrap: wrap;
+  }
+  .contact-method-info {
+    min-width: 0;
+  }
+  .contact-method-info p,
+  .contact-method-info h4 {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 </style>

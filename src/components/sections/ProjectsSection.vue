@@ -106,7 +106,7 @@
 
         <!-- Project 2: Automatizaciones N8N -->
         <article class="project-card featured animate-on-scroll">
-          <div class="project-image">
+          <div class="project-image n8n-bg">
             <div class="project-placeholder n8n-automation">
               <div class="placeholder-icon">⚡</div>
               <div class="placeholder-text">N8N Automation</div>
@@ -150,6 +150,9 @@
             <div class="project-header">
               <h3 class="project-title">Automatizaciones N8N para PyMEs</h3>
               <span class="project-category">Workflow Automation</span>
+                <p class="project-summary">
+    Automaticé procesos críticos para PyMEs, liberando hasta 10h semanales y aumentando la conversión en 30%.
+  </p>
             </div>
 
             <div class="project-challenge">
@@ -158,8 +161,7 @@
                 Problema
               </h4>
               <p>
-                Las PyMEs clientes perdían tiempo valioso en tareas manuales repetitivas que podrían
-                automatizarse, reduciendo su productividad y generando errores humanos.
+                Las PyMEs perdían mucho tiempo en tareas repetitivas, reduciendo productividad e incrementando errores.
               </p>
             </div>
 
@@ -169,9 +171,7 @@
                 Solución
               </h4>
               <p>
-                Desarrollé workflows personalizados con N8N que conectan diferentes sistemas
-                empresariales, automatizando procesos críticos de negocio con interfaz de monitoreo
-                en tiempo real.
+                Desarrollé workflows personalizados en N8N conectando sistemas empresariales, con panel de monitoreo en tiempo real y reducción del error humano.
               </p>
             </div>
 
@@ -352,6 +352,34 @@
 .project-placeholder.n8n-automation {
   background: linear-gradient(135deg, #f093fb, #f5576c);
 }
+
+/* N8N card: use GIF background, keep text legible */
+.project-image.n8n-bg {
+  background: url('../../assets/images/n8n-automation.gif') center/cover no-repeat,
+    linear-gradient(135deg, #f093fb, #f5576c);
+}
+.project-image.n8n-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 24, 27, 0.4);
+  pointer-events: none;
+  z-index: 1;
+}
+.project-image.n8n-bg .project-placeholder {
+  background: transparent;
+  position: relative;
+  z-index: 2;
+}
+.project-image.n8n-bg .placeholder-text,
+.project-image.n8n-bg .placeholder-icon {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+/* Ensure interactive overlay and badge above the dark layer */
+.project-overlay { z-index: 3; }
+.featured-badge { z-index: 4; }
 
 .project-placeholder.wordpress {
   background: linear-gradient(135deg, #4facfe, #00f2fe);
