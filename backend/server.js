@@ -12,6 +12,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Habilita Express para confiar en el proxy (Traefik)
+app.set('trust proxy', true);
+
 // Configuración de seguridad
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
@@ -63,18 +66,18 @@ const contactValidation = [
     .withMessage('El nombre debe tener entre 2 y 100 caracteres')
     .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/)
     .withMessage('El nombre solo puede contener letras y espacios'),
-  
+
   body('email')
     .isEmail()
     .normalizeEmail()
     .withMessage('Debe proporcionar un email válido'),
-  
+
   body('subject')
     .optional()
     .trim()
     .isLength({ max: 200 })
     .withMessage('El asunto no puede exceder 200 caracteres'),
-  
+
   body('message')
     .trim()
     .isLength({ min: 10, max: 2000 })
@@ -175,7 +178,7 @@ app.post('/api/contact', contactLimiter, contactValidation, async (req, res) => 
 
   } catch (error) {
     console.error('❌ Error al procesar contacto:', error.message);
-    
+
     // Determinar tipo de error
     if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
       return res.status(503).json({
