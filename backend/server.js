@@ -33,9 +33,13 @@ const corsOptions = {
   credentials: true
 };
 
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
 // Middleware para parsear JSON
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 
 // Rate limiting
 const contactLimiter = rateLimit({
