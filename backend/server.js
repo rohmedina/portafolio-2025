@@ -33,8 +33,6 @@ const corsOptions = {
   credentials: true
 };
 
-app.use(cors(corsOptions));
-
 // Middleware para parsear JSON
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
