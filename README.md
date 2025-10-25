@@ -195,7 +195,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 📞 Contacto
 
 **Rodrigo Medina Gatica**
-- 📧 Email: rmedinagatica@gmail.com
+- 📧 Email: contacto@rmedinadev.com
 - 💼 LinkedIn: [linkedin.com/in/rodrigo-medina-gatica](https://linkedin.com/in/rodrigo-medina-gatica)
 - 🐙 GitHub: [github.com/rodrigomedina](https://github.com/rodrigomedina)
 - 📍 Santiago, Chile
